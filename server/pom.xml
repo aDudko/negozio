@@ -11,9 +11,9 @@
     </parent>
 
     <groupId>net.dudko.project</groupId>
-    <artifactId>server</artifactId>
+    <artifactId>negozio</artifactId>
     <version>0.0.1</version>
-    <name>server</name>
+    <name>negozio</name>
     <description>Server side for Negozio Application</description>
     <packaging>jar</packaging>
 
