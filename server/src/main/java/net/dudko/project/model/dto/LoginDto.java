@@ -15,9 +15,9 @@ import lombok.NoArgsConstructor;
 public class LoginDto {
 
     @Schema(
-            description = "Username or Email of user"
+            description = "Email of user"
     )
-    private String usernameOrEmail;
+    private String email;
 
     @Schema(
             description = "Password of user"

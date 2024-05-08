@@ -25,5 +25,21 @@ services:
     depends_on:
       - db
 
+  client:
+    image: node:alpine
+    container_name: client
+    entrypoint: /bin/sh
+    command: -c "npm i && npm run dev"
+    ports:
+      - "8080:8080"
+    working_dir: /srv/app
+    volumes:
+      - type: bind
+        source: ./client
+        target: /srv/app
+    tty: true
+    depends_on:
+      - server
+
 volumes:
   postgres_data:

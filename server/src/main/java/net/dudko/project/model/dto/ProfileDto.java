@@ -2,16 +2,23 @@ package net.dudko.project.model.dto;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Schema(
-        description = "Register DTO (Data Transfer Object) to transfer the data between client and server"
+        description = "UserData DTO (Data Transfer Object) to transfer the data between client and server"
 )
 @Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class RegisterDto {
+public class ProfileDto {
+
+    @Schema(
+            description = "User ID"
+    )
+    private Long id;
 
     @Schema(
             description = "First and Last name of user"
@@ -34,8 +41,8 @@ public class RegisterDto {
     private String address;
 
     @Schema(
-            description = "Password of user"
+            description = "Hash of password for user"
     )
-    private String password;
+    private String passwordHash;
 
 }
