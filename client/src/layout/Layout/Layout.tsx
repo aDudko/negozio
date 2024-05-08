@@ -24,7 +24,7 @@ export function Layout() {
 	return <div className={styles['layout']}>
 		<div className={styles['sidebar']}>
 			<div className={styles['user']}>
-				<img className={styles['avatar']} src="/avatar.png" alt="Avatar" />
+				<img className={styles['avatar']} src="/avatar.svg" alt="Avatar" />
 				<div className={styles['name']}>{profile?.name}</div>
 				<div className={styles['email']}>{profile?.email}</div>
 			</div>
