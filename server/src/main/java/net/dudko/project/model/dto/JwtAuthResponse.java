@@ -16,6 +16,6 @@ public class JwtAuthResponse {
     @Schema(
             description = "Secret Token"
     )
-    private String access_token;
+    private String accessToken;
 
 }

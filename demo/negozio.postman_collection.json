@@ -19,7 +19,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"new_user\",\n    \"username\": \"username\",\n    \"email\": \"new_user@gmail.com\",\n    \"password\": \"user\"\n}",
+							"raw": "{\n    \"name\": \"New User\",\n    \"email\": \"sfdzdtrzdhzgrgcv\",\n    \"phone\": \"+491234567890\",\n    \"address\": \"Something address\",\n    \"password\": \"user\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -42,11 +42,14 @@
 				{
 					"name": "login",
 					"request": {
+						"auth": {
+							"type": "noauth"
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"usernameOrEmail\": \"user\",\n    \"password\": \"user\"\n}",
+							"raw": "{\n    \"email\": \"user@gmail.com\",\n    \"password\": \"user\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -65,8 +68,135 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "getProfile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ1c2VyQGdtYWlsLmNvbSIsImlhdCI6MTcxNTIwMDI0MSwiZXhwIjoxNzE1ODA1MDQxfQ.T-yR3odf3LdCSbwf4wXah7LLsXV1UsFcd7un0-_h007VRApLDaUazZ5vJjVzNGyn",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ1c2VyQGdtYWlsLmNvbSIsImlhdCI6MTcxNTIwMDI0MSwiZXhwIjoxNzE1ODA1MDQxfQ.T-yR3odf3LdCSbwf4wXah7LLsXV1UsFcd7un0-_h007VRApLDaUazZ5vJjVzNGyn",
+								"type": "text",
+								"uuid": "baeeb65e-4deb-4233-970e-25d12d3eef0a",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{base_negozio}}/auth/profile",
+							"host": [
+								"{{base_negozio}}"
+							],
+							"path": [
+								"auth",
+								"profile"
+							]
+						}
+					},
+					"response": []
 				}
 			]
+		},
+		{
+			"name": "getProducts",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ1c2VyQGdtYWlsLmNvbSIsImlhdCI6MTcxNTIwMDI0MSwiZXhwIjoxNzE1ODA1MDQxfQ.T-yR3odf3LdCSbwf4wXah7LLsXV1UsFcd7un0-_h007VRApLDaUazZ5vJjVzNGyn",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_negozio}}/product",
+					"host": [
+						"{{base_negozio}}"
+					],
+					"path": [
+						"product"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getProduct",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ1c2VyQGdtYWlsLmNvbSIsImlhdCI6MTcxNTIwMDI0MSwiZXhwIjoxNzE1ODA1MDQxfQ.T-yR3odf3LdCSbwf4wXah7LLsXV1UsFcd7un0-_h007VRApLDaUazZ5vJjVzNGyn",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_negozio}}/product/1",
+					"host": [
+						"{{base_negozio}}"
+					],
+					"path": [
+						"product",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createOrder",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ1c2VyQGdtYWlsLmNvbSIsImlhdCI6MTcxNTIwMDI0MSwiZXhwIjoxNzE1ODA1MDQxfQ.T-yR3odf3LdCSbwf4wXah7LLsXV1UsFcd7un0-_h007VRApLDaUazZ5vJjVzNGyn",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\n    \"products\": [\n        {\n            \"productId\": 1,\n            \"count\": 2\n        },\n        {\n            \"productId\": 2,\n            \"count\": 1\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_negozio}}/order",
+					"host": [
+						"{{base_negozio}}"
+					],
+					"path": [
+						"order"
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"auth": {

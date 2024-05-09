@@ -1,0 +1,111 @@
+.wrapper {
+    display: flex;
+    justify-content: space-between;
+    max-width: 800px;
+}
+
+.back {
+    box-shadow: 5px 10px 20px 0 rgba(211, 209, 216, 0.3);
+    background: rgb(255, 255, 255);
+    border: none;
+    border-radius: 10px;
+    width: 38px;
+    aspect-ratio: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.card {
+    display: flex;
+    justify-content: space-between;
+    height: 330px;
+    width: 660px;
+    margin-top: 50px;
+    background: var(--white-color);
+    border-radius: 19px;
+    box-shadow: 18px 18px 36px 0 rgba(211, 209, 216, 0.25);
+}
+
+.image {
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    gap: 0;
+    border-radius: 19px;
+}
+
+.head {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.product__ingredient {
+    list-style: disc;
+    color: var(--text-secondary-color);
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 20px;
+    text-transform: capitalize;
+}
+
+.line {
+    max-width: 512px;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 25px;
+    width: 242px;
+    height: 21px;
+    top: 120px;
+    left: 675px;
+}
+
+.hr {
+    max-width: 512px;
+    margin: 0;
+    border: 1px solid #F1F2F3;
+}
+
+.text {
+    color: var(--text-color);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.value {
+    color: var(--text-color);
+    font-size: 19px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 25px;
+    text-align: right;
+}
+
+.value span {
+    color: var(--text-secondary-color);
+}
+
+.rating {
+    /*position: absolute;*/
+    bottom: -12px;
+    left: 15px;
+    background: var(--white-color);
+    padding: 3px 8px;
+    border-radius: 20px;
+    color: #111719;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    box-shadow: 0 6px 24px 0 rgba(254, 114, 76, 0.20);
+}
+
+.list {
+    width: 100px;
+}

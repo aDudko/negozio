@@ -35,7 +35,7 @@ public class AuthController {
     public ResponseEntity<JwtAuthResponse> register(@RequestBody RegisterDto registerDto) {
         String token = authService.register(registerDto);
         JwtAuthResponse jwtAuthResponse = new JwtAuthResponse();
-        jwtAuthResponse.setAccess_token(token);
+        jwtAuthResponse.setAccessToken(token);
         return ResponseEntity.ok(jwtAuthResponse);
     }
 
@@ -51,7 +51,7 @@ public class AuthController {
     public ResponseEntity<JwtAuthResponse> login(@RequestBody LoginDto loginDto) {
         String token = authService.login(loginDto);
         JwtAuthResponse jwtAuthResponse = new JwtAuthResponse();
-        jwtAuthResponse.setAccess_token(token);
+        jwtAuthResponse.setAccessToken(token);
         return ResponseEntity.ok(jwtAuthResponse);
     }
 

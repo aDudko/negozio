@@ -1,3 +1,3 @@
 export interface ILoginResponse {
-    access_token: string;
+    accessToken: string;
 }

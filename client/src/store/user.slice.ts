@@ -89,7 +89,7 @@ export const userSlice = createSlice({
 			if (!action.payload) {
 				return;
 			}
-			state.jwt = action.payload.access_token;
+			state.jwt = action.payload.accessToken;
 		});
 		builder.addCase(login.rejected, (state, action) => {
 			state.loginErrorMessage = action.error.message;
@@ -103,7 +103,7 @@ export const userSlice = createSlice({
 			if (!action.payload) {
 				return;
 			}
-			state.jwt = action.payload.access_token;
+			state.jwt = action.payload.accessToken;
 		});
 		builder.addCase(register.rejected, (state, action) => {
 			state.registerErrorMessage = action.error.message;
