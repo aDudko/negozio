@@ -10,7 +10,7 @@
 and get URL <code>localhost:8080</code> in browser. Also you can see REST API Documentation in URL: 
 <code>localhost:8081/swagger-ui/index.html</code></p>
 
-In file [negozio.postman_collection.json](demo%2Fnegozio.postman_collection.json)blockchain-banking.postman_collection.jsoncode you can see simple REST API requests for example.
+In file [negozio.postman_collection.json](demo%2Fnegozio.postman_collection.json) you can see simple REST API requests for example.
 Import this into your Postman =)
 
 <p>
