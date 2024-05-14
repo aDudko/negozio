@@ -3,6 +3,7 @@ package net.dudko.project.controller;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import net.dudko.project.model.dto.JwtAuthResponse;
 import net.dudko.project.model.dto.LoginDto;
@@ -32,7 +33,7 @@ public class AuthController {
             description = "HTTP STATUS 200 OK"
     )
     @PostMapping("/register")
-    public ResponseEntity<JwtAuthResponse> register(@RequestBody RegisterDto registerDto) {
+    public ResponseEntity<JwtAuthResponse> register(@Valid @RequestBody RegisterDto registerDto) {
         String token = authService.register(registerDto);
         JwtAuthResponse jwtAuthResponse = new JwtAuthResponse();
         jwtAuthResponse.setAccessToken(token);
@@ -48,7 +49,7 @@ public class AuthController {
             description = "HTTP STATUS 200 OK"
     )
     @PostMapping("/login")
-    public ResponseEntity<JwtAuthResponse> login(@RequestBody LoginDto loginDto) {
+    public ResponseEntity<JwtAuthResponse> login(@Valid @RequestBody LoginDto loginDto) {
         String token = authService.login(loginDto);
         JwtAuthResponse jwtAuthResponse = new JwtAuthResponse();
         jwtAuthResponse.setAccessToken(token);

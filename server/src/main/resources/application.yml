@@ -1,0 +1,29 @@
+server:
+  address: 0.0.0.0
+  port: 8081
+
+spring:
+  application:
+    name: negozio
+  docker:
+    compose:
+      enabled: false
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://db:5432/negozio         # for docker container
+#    url: jdbc:postgresql://localhost:5432/negozio   # for local build
+    username: postgres
+    password: postgres
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  properties:
+    javax:
+      persistence:
+        validation:
+          mode: none
+
+app:
+  jwt-secret: 52aac57d57ebcc20ed330c0188e9a6923c447ff4301495d2284e056b0c0c62ec  # https://emn178.github.io/online-tools/sha256.html
+  jwt-expiration-milliseconds: 604800000  # 7 days

@@ -42,9 +42,6 @@ public class AuthServiceImpl implements AuthService {
 
     @Override
     public String register(RegisterDto registerDto) {
-        if (userRepository.existsByEmail(registerDto.getEmail())) {
-            throw new NegozioAPIException("Email already exists!");
-        }
         User user = User.builder()
                 .name(registerDto.getName())
                 .email(registerDto.getEmail())
@@ -53,6 +50,9 @@ public class AuthServiceImpl implements AuthService {
                 .password(passwordEncoder.encode(registerDto.getPassword()))
                 .build();
         Set<Role> roles = new HashSet<>();
+        if (roleRepository.findByName("ROLE_USER") == null) {
+            roleRepository.save(Role.builder().name("ROLE_USER").build());
+        }
         roles.add(roleRepository.findByName("ROLE_USER"));
         user.setRoles(roles);
         userRepository.save(user);
