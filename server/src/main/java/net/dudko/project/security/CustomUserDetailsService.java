@@ -23,7 +23,7 @@ public class CustomUserDetailsService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         // For correct implementation UserDetailsService UserName is Email
         User user = userRepository.findByEmail(username)
-                .orElseThrow(() -> new UsernameNotFoundException("User not exist bu email"));
+                .orElseThrow(() -> new UsernameNotFoundException("User not exist by email"));
 
         Set<GrantedAuthority> grantedAuthorities = user.getRoles().stream()
                 .map((role) -> new SimpleGrantedAuthority(role.getName()))

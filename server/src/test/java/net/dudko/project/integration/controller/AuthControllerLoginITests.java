@@ -1,5 +1,6 @@
-package net.dudko.project.controller;
+package net.dudko.project.integration.controller;
 
+import net.dudko.project.TestUtil;
 import net.dudko.project.domain.entity.Role;
 import net.dudko.project.domain.entity.User;
 import net.dudko.project.domain.repository.RoleRepository;
@@ -9,8 +10,8 @@ import net.dudko.project.model.dto.LoginDto;
 import net.dudko.project.model.exception.ValidationError;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
@@ -18,36 +19,39 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 
-@ExtendWith(SpringExtension.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @ActiveProfiles("test")
-public class AuthControllerLoginTest {
+public class AuthControllerLoginITests {
 
     private static final String BASE_URL = "/auth/login";
 
-    @Autowired
-    TestRestTemplate testRestTemplate;
+    private final TestRestTemplate testRestTemplate;
+    private final UserRepository userRepository;
+    private final RoleRepository roleRepository;
+    private final PasswordEncoder passwordEncoder;
+
+    private LoginDto loginDto;
 
     @Autowired
-    UserRepository userRepository;
-
-    @Autowired
-    RoleRepository roleRepository;
-
-    @Autowired
-    PasswordEncoder passwordEncoder;
+    public AuthControllerLoginITests(TestRestTemplate testRestTemplate,
+                                     UserRepository userRepository,
+                                     RoleRepository roleRepository,
+                                     PasswordEncoder passwordEncoder) {
+        this.testRestTemplate = testRestTemplate;
+        this.userRepository = userRepository;
+        this.roleRepository = roleRepository;
+        this.passwordEncoder = passwordEncoder;
+    }
 
     @BeforeEach
-    public void prepare() {
+    public void setup() {
         User user = User.builder()
                 .name("test-user")
                 .email("test@mail.com")
@@ -59,6 +63,7 @@ public class AuthControllerLoginTest {
         roles.add(roleRepository.findByName("ROLE_USER"));
         user.setRoles(roles);
         userRepository.save(user);
+        loginDto = TestUtil.getValidLoginDto();
     }
 
     @AfterEach
@@ -66,27 +71,20 @@ public class AuthControllerLoginTest {
         userRepository.deleteAll();
     }
 
-    private LoginDto createValidLoginDto() {
-        return LoginDto.builder()
-                .email("test@mail.com")
-                .password("P4ssword")
-                .build();
-    }
-
     private <T> ResponseEntity<T> postLogin(Object request, Class<T> response) {
         return testRestTemplate.postForEntity(BASE_URL, request, response);
     }
 
     @Test
+    @DisplayName("Integration test for check status code when login successfully")
     public void testLogin_whenLoginIsValid_thenReturnOk() {
-        LoginDto loginDto = createValidLoginDto();
         ResponseEntity<Object> response = postLogin(loginDto, Object.class);
         assertEquals(response.getStatusCode(), HttpStatus.OK);
     }
 
     @Test
+    @DisplayName("Integration test for get access token when login successfully")
     public void testLogin_whenLoginIsValid_thenReceiveAccessToken() {
-        LoginDto loginDto = createValidLoginDto();
         ResponseEntity<JwtAuthResponse> response = postLogin(loginDto, JwtAuthResponse.class);
         assertNotNull(response.getBody().getAccessToken());
     }
@@ -96,16 +94,16 @@ public class AuthControllerLoginTest {
     // Null-check
 
     @Test
+    @DisplayName("Integration test for check status code when login not successfully, because email is empty")
     public void testLogin_whenLoginHasNullEmail_receiveBadRequest() {
-        LoginDto loginDto = createValidLoginDto();
         loginDto.setEmail(null);
         ResponseEntity<Object> response = postLogin(loginDto, Object.class);
         assertEquals(response.getStatusCode(), HttpStatus.BAD_REQUEST);
     }
 
     @Test
+    @DisplayName("Integration test for check status code when login not successfully, because password is empty")
     public void testLogin_whenLoginHasNullPassword_receiveBadRequest() {
-        LoginDto loginDto = createValidLoginDto();
         loginDto.setPassword(null);
         ResponseEntity<Object> response = postLogin(loginDto, Object.class);
         assertEquals(response.getStatusCode(), HttpStatus.BAD_REQUEST);
@@ -114,8 +112,8 @@ public class AuthControllerLoginTest {
     // INTERNALIZATION
 
     @Test
+    @DisplayName("Integration test for check error message when login not successfully, because email is empty")
     public void testLogin_whenLoginHasNullEmail_receiveMessageOfNullErrorForEmail() {
-        LoginDto loginDto = createValidLoginDto();
         loginDto.setEmail(null);
         ResponseEntity<ValidationError> response = postLogin(loginDto, ValidationError.class);
         Map<String, String> validationErrors = response.getBody().getValidationErrors();
@@ -123,8 +121,8 @@ public class AuthControllerLoginTest {
     }
 
     @Test
+    @DisplayName("Integration test for check error message when login not successfully, because password is empty")
     public void testLogin_whenLoginHasNullPassword_receiveMessageOfNullErrorForPassword() {
-        LoginDto loginDto = createValidLoginDto();
         loginDto.setPassword(null);
         ResponseEntity<ValidationError> response = postLogin(loginDto, ValidationError.class);
         Map<String, String> validationErrors = response.getBody().getValidationErrors();

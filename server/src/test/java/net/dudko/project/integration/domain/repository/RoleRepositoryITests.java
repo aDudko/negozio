@@ -1,30 +1,34 @@
-package net.dudko.project.domain.repository;
+package net.dudko.project.integration.domain.repository;
 
 import net.dudko.project.domain.entity.Role;
+import net.dudko.project.domain.repository.RoleRepository;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@ExtendWith(SpringExtension.class)
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 @ActiveProfiles("test")
-class RoleRepositoryTest {
+class RoleRepositoryITests {
+
+    private final TestEntityManager entityManager;
+    private final RoleRepository roleRepository;
 
     @Autowired
-    TestEntityManager entityManager;
-
-    @Autowired
-    RoleRepository roleRepository;
+    public RoleRepositoryITests(TestEntityManager entityManager,
+                                RoleRepository roleRepository) {
+        this.entityManager = entityManager;
+        this.roleRepository = roleRepository;
+    }
 
     @Test
+    @DisplayName("Unit positive test for find role by name when role exist in DB")
     public void findByRoleName_whenRoleExists_thenReturnRole() {
         Role role = new Role();
         role.setName("ROLE_TEST");
@@ -34,6 +38,7 @@ class RoleRepositoryTest {
     }
 
     @Test
+    @DisplayName("Unit negative test for find role by name when role not exist in DB")
     public void findByRoleName_whenRoleNotExists_thenReturnNull() {
         Role inDb = roleRepository.findByName("ROLE_NEGATIVE_TEST");
         assertNull(inDb);
