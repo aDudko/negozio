@@ -1,8 +1,9 @@
-package net.dudko.project.integration.domain.repository;
+package net.dudko.project.integration.repository;
 
 import net.dudko.project.TestUtil;
 import net.dudko.project.domain.entity.User;
 import net.dudko.project.domain.repository.UserRepository;
+import net.dudko.project.integration.AbstractContainerBaseTest;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -18,7 +19,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 @ActiveProfiles("test")
-class UserRepositoryITests {
+class UserRepositoryITests extends AbstractContainerBaseTest {
 
     private final TestEntityManager entityManager;
     private final UserRepository userRepository;

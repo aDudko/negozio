@@ -1,7 +1,8 @@
-package net.dudko.project.integration.domain.repository;
+package net.dudko.project.integration.repository;
 
 import net.dudko.project.domain.entity.Role;
 import net.dudko.project.domain.repository.RoleRepository;
+import net.dudko.project.integration.AbstractContainerBaseTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 @ActiveProfiles("test")
-class RoleRepositoryITests {
+class RoleRepositoryITests extends AbstractContainerBaseTest {
 
     private final TestEntityManager entityManager;
     private final RoleRepository roleRepository;

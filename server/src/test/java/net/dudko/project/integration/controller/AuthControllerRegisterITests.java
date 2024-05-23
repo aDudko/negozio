@@ -5,6 +5,7 @@ import net.dudko.project.domain.entity.Role;
 import net.dudko.project.domain.entity.User;
 import net.dudko.project.domain.repository.RoleRepository;
 import net.dudko.project.domain.repository.UserRepository;
+import net.dudko.project.integration.AbstractContainerBaseTest;
 import net.dudko.project.model.dto.JwtAuthResponse;
 import net.dudko.project.model.dto.RegisterDto;
 import net.dudko.project.model.exception.ValidationError;
@@ -30,7 +31,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @ActiveProfiles("test")
-class AuthControllerRegisterITests {
+class AuthControllerRegisterITests extends AbstractContainerBaseTest {
 
     private static final String BASE_URL = "/auth/register";
 
