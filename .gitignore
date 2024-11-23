@@ -4,8 +4,8 @@ target/
 !**/src/test/**/target/
 
 ### docker-compose
-/docker-compose/.env
-/docker-compose/volumes/
+/infrastructure/docker-compose/.env
+/infrastructure/docker-compose/volumes/
 
 ### IntelliJ IDEA ###
 /.idea/

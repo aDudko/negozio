@@ -16,13 +16,11 @@ See: [ZooKeeper Commands: The Four Letter Words](https://zookeeper.apache.org/do
 ```sh
 docker-compose -f common.yml -f kafka_cluster.yml up
 ```
-
 ### Init Kafka: create topics (runs one time)
 **It runs in a new Terminal**
 ```sh
 docker-compose -f common.yml -f init_kafka.yml up
 ```
-
 ### Check Kafka Manager
 - Go to [User Interface](http://localhost:9000/)
 - `Cluster` `->` `Add Cluster`
@@ -30,3 +28,9 @@ docker-compose -f common.yml -f init_kafka.yml up
   - `Cluster Zookeeper Host` `=` `zookeeper:2181`
   - `->` `Save`
 - `Go to cluster view`
+
+# Start Postgres
+**It runs in a new Terminal**
+```sh
+docker-compose -f common.yml -f postgres.yml up
+```
