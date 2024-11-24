@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+
+    negozio-order-service:
+        image: anatolydudko/negozio-order-service:${APP_VERSION}
+        hostname: negozio-order-service
+        container_name: negozio-order-service
+        ports:
+            - "8181:8181"
+        environment:
+            SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/postgres?currentSchema=order&binaryTransfer=true&reWriteBatchedInserts=true&stringtype=unspecified
+            DATABASE_USERNAME: ${DATABASE_USERNAME}
+            DATABASE_PASSWORD: ${DATABASE_PASSWORD}
+            KAFKA-CONFIG_BOOTSTRAP-SERVERS: kafka-broker-1:9092,kafka-broker-2:9092,kafka-broker-3:9092
+            KAFKA-CONFIG_SCHEMA-REGISTRY-URL: http://schema-registry:8081
+        networks:
+            - ${GLOBAL_NETWORK:-service}

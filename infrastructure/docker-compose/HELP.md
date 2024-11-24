@@ -34,3 +34,9 @@ docker-compose -f common.yml -f init_kafka.yml up
 ```sh
 docker-compose -f common.yml -f postgres.yml up
 ```
+
+# Running web-services
+**It runs in a new Terminal**
+```sh
+docker-compose -f common.yml -f web_services.yml up
+```
