@@ -3,13 +3,13 @@
 ```sh
 docker-compose -f common.yml -f zookeeper.yml up
 ```
-
 ### Test the health of ZooKeeper
 **It runs in a new Terminal**
 ```sh
 echo ruok | nc localhost 2181
 ```
 See: [ZooKeeper Commands: The Four Letter Words](https://zookeeper.apache.org/doc/r3.1.2/zookeeperAdmin.html#sc_zkCommands)
+
 
 ## Start cluster of Kafka
 **It runs in a new Terminal**
@@ -29,13 +29,22 @@ docker-compose -f common.yml -f init_kafka.yml up
   - `->` `Save`
 - `Go to cluster view`
 
-# Start Postgres
+
+## Start cluster of Elastic
+**It runs in a new Terminal**
+```sh
+docker-compose -f common.yml -f elastic_cluster.yml up
+```
+
+
+## Start Postgres
 **It runs in a new Terminal**
 ```sh
 docker-compose -f common.yml -f postgres.yml up
 ```
 
-# Running web-services
+
+## Running web-services
 **It runs in a new Terminal**
 ```sh
 docker-compose -f common.yml -f web_services.yml up

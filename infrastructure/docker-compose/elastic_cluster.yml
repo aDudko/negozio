@@ -1,0 +1,55 @@
+version: '3.8'
+
+services:
+
+    elasticsearch:
+        image: elasticsearch:${ELK_VERSION}
+        hostname: elasticsearch
+        container_name: elasticsearch
+        environment:
+            - discovery.type=single-node
+            - bootstrap.memory_lock=true
+            - xpack.security.enabled=false
+            - "ES_JAVA_OPTS=-Xms2g -Xmx2g"
+        healthcheck:
+            test: [ "CMD-SHELL", "curl -f http://localhost:9200 || exit 1" ]
+            interval: 10s
+            retries: 5
+        ports:
+            - "9200:9200"
+            - "9300:9300"
+        volumes:
+            - "./volumes/es_data:/usr/share/elasticsearch/data"
+        networks:
+            - ${GLOBAL_NETWORK:-elastic}
+
+    kibana:
+        image: kibana:${ELK_VERSION}
+        hostname: kibana
+        container_name: kibana
+        environment:
+            - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
+        ports:
+            - "5601:5601"
+        depends_on:
+            elasticsearch:
+                condition: service_healthy
+        networks:
+            - ${GLOBAL_NETWORK:-elastic}
+
+    logstash:
+        image: logstash:${ELK_VERSION}
+        hostname: logstash
+        container_name: logstash
+        environment:
+            - LS_JAVA_OPTS=-Xms512m -Xmx512m
+        volumes:
+            - "./config/logstash.conf:/usr/share/logstash/pipeline/logstash.conf:ro"
+        ports:
+            - "5044:5044"
+            - "9600:9600"
+        depends_on:
+            - elasticsearch
+        networks:
+            - ${GLOBAL_NETWORK:-elastic}
+

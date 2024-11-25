@@ -32,6 +32,7 @@
         <mockito.version>5.7.0</mockito.version>
         <!--Docs-->
         <swagger.version>2.5.0</swagger.version>
+        <logstash.logback.encoder.version>7.4</logstash.logback.encoder.version>
         <!-- Java version -->
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
@@ -131,6 +132,11 @@
             <artifactId>lombok</artifactId>
             <scope>provided</scope>
             <version>${lombok.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>net.logstash.logback</groupId>
+            <artifactId>logstash-logback-encoder</artifactId>
+            <version>${logstash.logback.encoder.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
