@@ -81,6 +81,16 @@
                 <artifactId>kafka-consumer</artifactId>
                 <version>${project.version}</version>
             </dependency>
+            <dependency>
+                <groupId>com.negozio.service</groupId>
+                <artifactId>outbox</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.negozio.service</groupId>
+                <artifactId>saga</artifactId>
+                <version>${project.version}</version>
+            </dependency>
 
             <!-- order-service -->
             <dependency>
