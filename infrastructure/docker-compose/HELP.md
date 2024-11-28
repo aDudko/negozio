@@ -19,7 +19,7 @@ docker-compose -f common.yml -f kafka_cluster.yml up
 ### Init Kafka: create topics (runs one time)
 **It runs in a new Terminal**
 ```sh
-docker-compose -f common.yml -f init_kafka.yml up
+docker-compose -f common.yml -f config/init_kafka.yml up
 ```
 ### Check Kafka Manager
 - Go to [User Interface](http://localhost:9000/)
