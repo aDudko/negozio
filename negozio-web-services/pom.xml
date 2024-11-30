@@ -44,6 +44,7 @@
         <module>negozio-infra</module>
         <module>negozio-order-service</module>
         <module>negozio-payment-service</module>
+        <module>negozio-department-service</module>
     </modules>
 
     <dependencyManagement>
@@ -60,7 +61,7 @@
                 <version>${project.version}</version>
             </dependency>
 
-            <!-- infra: kafka -->
+            <!-- infra -->
             <dependency>
                 <groupId>com.negozio.service</groupId>
                 <artifactId>kafka-config-data</artifactId>
@@ -143,6 +144,33 @@
             <dependency>
                 <groupId>com.negozio.service</groupId>
                 <artifactId>payment-messaging</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <!-- department-service -->
+            <dependency>
+                <groupId>com.negozio.service</groupId>
+                <artifactId>department-application</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.negozio.service</groupId>
+                <artifactId>department-data-access</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.negozio.service</groupId>
+                <artifactId>department-app-service</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.negozio.service</groupId>
+                <artifactId>department-domain-core</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.negozio.service</groupId>
+                <artifactId>department-messaging</artifactId>
                 <version>${project.version}</version>
             </dependency>
 
