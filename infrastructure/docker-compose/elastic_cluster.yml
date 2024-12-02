@@ -3,7 +3,7 @@ version: '3.8'
 services:
 
     elasticsearch:
-        image: elasticsearch:${ELK_VERSION}
+        image: elasticsearch:${ELK_VERSION:-8.16.1}
         hostname: elasticsearch
         container_name: elasticsearch
         environment:
@@ -24,7 +24,7 @@ services:
             - ${GLOBAL_NETWORK:-elastic}
 
     kibana:
-        image: kibana:${ELK_VERSION}
+        image: kibana:${ELK_VERSION:-8.16.1}
         hostname: kibana
         container_name: kibana
         environment:
@@ -38,7 +38,7 @@ services:
             - ${GLOBAL_NETWORK:-elastic}
 
     logstash:
-        image: logstash:${ELK_VERSION}
+        image: logstash:${ELK_VERSION:-8.16.1}
         hostname: logstash
         container_name: logstash
         environment:
@@ -52,4 +52,3 @@ services:
             - elasticsearch
         networks:
             - ${GLOBAL_NETWORK:-elastic}
-

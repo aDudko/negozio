@@ -1,3 +1,8 @@
+# How to try this project?
+
+#### Warning❗ It is recommended to set variable of environment `GLOBAL_NETWORK`
+#### Warning❗ It is also recommended to have `12 Gb` of memory limit and `4 CPU` limit for local docker deployment. And to run the services `one by one`, monitoring the CPU and memory load.
+
 ## Start ZooKeeper
 **It runs in a new Terminal**
 ```sh
@@ -35,7 +40,11 @@ docker-compose -f common.yml -f config/init_kafka.yml up
 ```sh
 docker-compose -f common.yml -f elastic_cluster.yml up
 ```
-
+### Verify that logs from microservices are coming into Logstash
+**It runs in a new Terminal**
+```sh
+docker logs logstash
+```
 
 ## Start Postgres
 **It runs in a new Terminal**

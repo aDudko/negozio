@@ -1,13 +1,14 @@
-## How to try this project
-[See more](infrastructure/docker-compose/HELP.md)
+## How to try this project?
+- [docker-compose](infrastructure/docker-compose/HELP.md)
 
 ---
 
 ## Platform utilises the following Concepts:
 - `Multi-Modules Architecture`
 - `RESTful WebServices`
+- `Domain Driven Design`
 - `Containerization`
-- `DDD`, `CQRS`, `SAGA`, `Outbox`
+- Implements `CQRS`, `SAGA` and `Outbox` architectural patterns
 
 ---
 
