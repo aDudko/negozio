@@ -45,6 +45,7 @@
         <module>negozio-order-service</module>
         <module>negozio-payment-service</module>
         <module>negozio-department-service</module>
+        <module>negozio-customer-service</module>
     </modules>
 
     <dependencyManagement>
@@ -171,6 +172,33 @@
             <dependency>
                 <groupId>com.negozio.service</groupId>
                 <artifactId>department-messaging</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <!-- customer-service -->
+            <dependency>
+                <groupId>com.negozio.service</groupId>
+                <artifactId>customer-application</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.negozio.service</groupId>
+                <artifactId>customer-data-access</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.negozio.service</groupId>
+                <artifactId>customer-app-service</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.negozio.service</groupId>
+                <artifactId>customer-domain-core</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.negozio.service</groupId>
+                <artifactId>customer-messaging</artifactId>
                 <version>${project.version}</version>
             </dependency>
 
