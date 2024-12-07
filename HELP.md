@@ -4,10 +4,11 @@
 ---
 
 ## Platform utilises the following Concepts:
-- `Multi-Modules Architecture`
+- `Multi-Modules Hexagonal Architecture` on server layer
 - `RESTful WebServices`
 - `Domain Driven Design`
 - `Containerization`
+- `Cloud-Native Architecture`
 - Implements `CQRS`, `SAGA` and `Outbox` architectural patterns
 
 ---

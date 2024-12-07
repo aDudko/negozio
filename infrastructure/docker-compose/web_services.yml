@@ -46,3 +46,18 @@ services:
             KAFKA-CONFIG_SCHEMA-REGISTRY-URL: http://schema-registry:8081
         networks:
             - ${GLOBAL_NETWORK:-service}
+
+    negozio-customer-service:
+        image: anatolydudko/negozio-customer-service:${APP_VERSION:-demo}
+        hostname: negozio-customer-service
+        container_name: negozio-customer-service
+        ports:
+            - "8184:8184"
+        environment:
+            SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/postgres?currentSchema=customer&binaryTransfer=true&reWriteBatchedInserts=true&stringtype=unspecified
+            DATABASE_USERNAME: ${DATABASE_USERNAME:-postgres}
+            DATABASE_PASSWORD: ${DATABASE_PASSWORD:-postgres}
+            KAFKA-CONFIG_BOOTSTRAP-SERVERS: kafka-broker-1:9092,kafka-broker-2:9092,kafka-broker-3:9092
+            KAFKA-CONFIG_SCHEMA-REGISTRY-URL: http://schema-registry:8081
+        networks:
+            - ${GLOBAL_NETWORK:-service}
