@@ -13,7 +13,7 @@ docker-compose -f common.yml -f zookeeper.yml up
 ```sh
 echo ruok | nc localhost 2181
 ```
-See: [ZooKeeper Commands: The Four Letter Words](https://zookeeper.apache.org/doc/r3.1.2/zookeeperAdmin.html#sc_zkCommands)
+The answer should be `imok`. See: [ZooKeeper Commands: The Four Letter Words](https://zookeeper.apache.org/doc/r3.1.2/zookeeperAdmin.html#sc_zkCommands)
 
 
 ## Start cluster of Kafka

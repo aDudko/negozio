@@ -46,7 +46,6 @@
         <module>negozio-payment-service</module>
         <module>negozio-department-service</module>
         <module>negozio-customer-service</module>
-        <module>negozio-product-service</module>
     </modules>
 
     <dependencyManagement>
@@ -147,6 +146,11 @@
             <!-- department-service -->
             <dependency>
                 <groupId>com.negozio.service</groupId>
+                <artifactId>department-application</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.negozio.service</groupId>
                 <artifactId>department-data-access</artifactId>
                 <version>${project.version}</version>
             </dependency>
@@ -190,33 +194,6 @@
             <dependency>
                 <groupId>com.negozio.service</groupId>
                 <artifactId>customer-messaging</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-
-            <!-- product-service -->
-            <dependency>
-                <groupId>com.negozio.service</groupId>
-                <artifactId>product-application</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.negozio.service</groupId>
-                <artifactId>product-data-access</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.negozio.service</groupId>
-                <artifactId>product-app-service</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.negozio.service</groupId>
-                <artifactId>product-domain-core</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.negozio.service</groupId>
-                <artifactId>product-messaging</artifactId>
                 <version>${project.version}</version>
             </dependency>
 
