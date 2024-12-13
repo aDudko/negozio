@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+
+    negozio-customer-web-client:
+        image: anatolydudko/negozio-customer-web-client-v1:${APP_VERSION:-demo}
+        hostname: negozio-customer-web-client
+        container_name: negozio-customer-web-client
+        restart: always
+        ports:
+            - "8080:8080"
+        networks:
+            - ${GLOBAL_NETWORK:-service}

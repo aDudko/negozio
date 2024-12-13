@@ -58,3 +58,10 @@ docker-compose -f common.yml -f postgres.yml up
 ```sh
 docker-compose -f common.yml -f web_services.yml up
 ```
+
+
+## Running web-clients
+**It runs in a new Terminal**
+```sh
+docker-compose -f common.yml -f web_clients.yml up
+```

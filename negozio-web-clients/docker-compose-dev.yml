@@ -1,0 +1,25 @@
+version: "3.8"
+
+services:
+
+    negozio-customer-web-client-v1:
+        hostname: web-client
+        container_name: web-client
+        restart: always
+        build: negozio-customer-web-client-v1
+        ports:
+            - "8080:8080"
+        volumes:
+            - /app/node_modules
+            - ./negozio-customer-web-client-v1:/app
+
+#    negozio-manager-web-client-v1:
+#        hostname: web-client
+#        container_name: web-client
+#        restart: always
+#        build: negozio-manager-web-client-v1
+#        ports:
+#            - "8080:8080"
+#        volumes:
+#            - /app/node_modules
+#            - ./negozio-manager-web-client-v1:/app
