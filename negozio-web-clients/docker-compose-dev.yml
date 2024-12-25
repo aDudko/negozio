@@ -3,23 +3,19 @@ version: "3.8"
 services:
 
     negozio-customer-web-client-v1:
+        image: anatolydudko/negozio-customer-web-client-v1:0.2.0
         hostname: web-client
         container_name: web-client
         restart: always
         build: negozio-customer-web-client-v1
+        environment:
+            VITE_ORDER_SERVICE: http://localhost:8181
+            VITE_DEPARTMENT_SERVICE: http://localhost:8183
+            VITE_CUSTOMER_SERVICE: http://localhost:8184
+            VITE_DEPARTMENT_ID: d215b5f8-0249-4dc5-89a3-51fd148cfb45
+            VITE_CURRENCY: €
         ports:
             - "8080:8080"
         volumes:
             - /app/node_modules
             - ./negozio-customer-web-client-v1:/app
-
-#    negozio-manager-web-client-v1:
-#        hostname: web-client
-#        container_name: web-client
-#        restart: always
-#        build: negozio-manager-web-client-v1
-#        ports:
-#            - "8080:8080"
-#        volumes:
-#            - /app/node_modules
-#            - ./negozio-manager-web-client-v1:/app

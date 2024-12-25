@@ -7,6 +7,12 @@ services:
         hostname: negozio-customer-web-client
         container_name: negozio-customer-web-client
         restart: always
+        environment:
+            VITE_ORDER_SERVICE: http://localhost:8181
+            VITE_DEPARTMENT_SERVICE: http://localhost:8183
+            VITE_CUSTOMER_SERVICE: http://localhost:8184
+            VITE_DEPARTMENT_ID: ${VITE_DEPARTMENT_ID:-d215b5f8-0249-4dc5-89a3-51fd148cfb45}
+            VITE_CURRENCY: ${VITE_CURRENCY:-€}
         ports:
             - "8080:8080"
         networks:
