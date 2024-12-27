@@ -48,6 +48,10 @@ docker logs logstash
 ```sh
 docker-compose -f common.yml -f postgres.yml up
 ```
+### Init Postgres: create schemas and tables
+```sh
+docker-compose -f common.yml -f config/init_postgres.yml up
+```
 
 
 ## Running web-services

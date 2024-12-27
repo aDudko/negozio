@@ -66,6 +66,11 @@
             <!-- infra -->
             <dependency>
                 <groupId>com.negozio.service</groupId>
+                <artifactId>db-migrator</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.negozio.service</groupId>
                 <artifactId>kafka-config-data</artifactId>
                 <version>${project.version}</version>
             </dependency>
