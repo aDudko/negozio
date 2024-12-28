@@ -1,0 +1,30 @@
+scrape_configs:
+  - job_name: 'prometheus'
+    scrape_interval: 1m
+    static_configs:
+      - targets: ['localhost:9090']
+  - job_name: 'grafana'
+    scrape_interval: 1m
+    metrics_path: '/metrics'
+    static_configs:
+      - targets: ['grafana:3000']
+  - job_name: 'negozio-customer-service'
+    scrape_interval: 1m
+    metrics_path: '/actuator/metrics'
+    static_configs:
+      - targets: ['negozio-order-service:8181']
+  - job_name: 'negozio-payment-service'
+    scrape_interval: 1m
+    metrics_path: '/actuator/metrics'
+    static_configs:
+      - targets: ['negozio-payment-service:8182']
+  - job_name: 'negozio-department-service'
+    scrape_interval: 1m
+    metrics_path: '/actuator/metrics'
+    static_configs:
+      - targets: [ 'negozio-department-service:8183' ]
+  - job_name: 'negozio-customer-service'
+    scrape_interval: 1m
+    metrics_path: '/actuator/metrics'
+    static_configs:
+      - targets: ['negozio-customer-service:8184']
