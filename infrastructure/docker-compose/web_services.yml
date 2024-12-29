@@ -9,11 +9,17 @@ services:
         ports:
             - "8181:8181"
         environment:
+            LOGGING_LEVEL_COM_NEGOZIO_SERVICE: INFO
             SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/postgres?currentSchema=order&binaryTransfer=true&reWriteBatchedInserts=true&stringtype=unspecified
             DATABASE_USERNAME: ${DATABASE_USERNAME:-postgres}
             DATABASE_PASSWORD: ${DATABASE_PASSWORD:-postgres}
             KAFKA-CONFIG_BOOTSTRAP-SERVERS: kafka-broker-1:9092,kafka-broker-2:9092,kafka-broker-3:9092
             KAFKA-CONFIG_SCHEMA-REGISTRY-URL: http://schema-registry:8081
+            EUREKA_SERVICE_URL: http://discovery-service:8761/eureka/
+            ZIPKIN_URL: http://zipkin:9411
+            RABBIT_URI: amqp://guest:guest@rabbitmq:5672
+            SPRING_RABBITMQ_HOST: rabbitmq
+            SPRING_ZIPKIN_SENDER_TYPE: rabbit
         networks:
             - ${GLOBAL_NETWORK:-service}
 
@@ -24,11 +30,17 @@ services:
         ports:
             - "8182:8182"
         environment:
+            LOGGING_LEVEL_COM_NEGOZIO_SERVICE: INFO
             SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/postgres?currentSchema=payment&binaryTransfer=true&reWriteBatchedInserts=true&stringtype=unspecified
             DATABASE_USERNAME: ${DATABASE_USERNAME:-postgres}
             DATABASE_PASSWORD: ${DATABASE_PASSWORD:-postgres}
             KAFKA-CONFIG_BOOTSTRAP-SERVERS: kafka-broker-1:9092,kafka-broker-2:9092,kafka-broker-3:9092
             KAFKA-CONFIG_SCHEMA-REGISTRY-URL: http://schema-registry:8081
+            EUREKA_SERVICE_URL: http://discovery-service:8761/eureka/
+            ZIPKIN_URL: http://zipkin:9411
+            RABBIT_URI: amqp://guest:guest@rabbitmq:5672
+            SPRING_RABBITMQ_HOST: rabbitmq
+            SPRING_ZIPKIN_SENDER_TYPE: rabbit
         networks:
             - ${GLOBAL_NETWORK:-service}
 
@@ -39,11 +51,17 @@ services:
         ports:
             - "8183:8183"
         environment:
+            LOGGING_LEVEL_COM_NEGOZIO_SERVICE: INFO
             SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/postgres?currentSchema=department&binaryTransfer=true&reWriteBatchedInserts=true&stringtype=unspecified
             DATABASE_USERNAME: ${DATABASE_USERNAME:-postgres}
             DATABASE_PASSWORD: ${DATABASE_PASSWORD:-postgres}
             KAFKA-CONFIG_BOOTSTRAP-SERVERS: kafka-broker-1:9092,kafka-broker-2:9092,kafka-broker-3:9092
             KAFKA-CONFIG_SCHEMA-REGISTRY-URL: http://schema-registry:8081
+            EUREKA_SERVICE_URL: http://discovery-service:8761/eureka/
+            ZIPKIN_URL: http://zipkin:9411
+            RABBIT_URI: amqp://guest:guest@rabbitmq:5672
+            SPRING_RABBITMQ_HOST: rabbitmq
+            SPRING_ZIPKIN_SENDER_TYPE: rabbit
         networks:
             - ${GLOBAL_NETWORK:-service}
 
@@ -54,11 +72,17 @@ services:
         ports:
             - "8184:8184"
         environment:
+            LOGGING_LEVEL_COM_NEGOZIO_SERVICE: INFO
             SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/postgres?currentSchema=customer&binaryTransfer=true&reWriteBatchedInserts=true&stringtype=unspecified
             DATABASE_USERNAME: ${DATABASE_USERNAME:-postgres}
             DATABASE_PASSWORD: ${DATABASE_PASSWORD:-postgres}
             JWT_SECRET: ${JWT_SECRET}
             KAFKA-CONFIG_BOOTSTRAP-SERVERS: kafka-broker-1:9092,kafka-broker-2:9092,kafka-broker-3:9092
             KAFKA-CONFIG_SCHEMA-REGISTRY-URL: http://schema-registry:8081
+            EUREKA_SERVICE_URL: http://discovery-service:8761/eureka/
+            ZIPKIN_URL: http://zipkin:9411
+            RABBIT_URI: amqp://guest:guest@rabbitmq:5672
+            SPRING_RABBITMQ_HOST: rabbitmq
+            SPRING_ZIPKIN_SENDER_TYPE: rabbit
         networks:
             - ${GLOBAL_NETWORK:-service}

@@ -53,6 +53,18 @@ docker-compose -f common.yml -f postgres.yml up
 docker-compose -f common.yml -f config/init_postgres.yml up
 ```
 
+## Running Zipkin
+```sh
+docker-compose -f common.yml -f zipkin.yml up
+```
+URL by default: `http://localhost:9411`
+
+
+## Running Cloud services
+```sh
+docker-compose -f common.yml -f cloud_service.yml up
+```
+
 
 ## Running web-services
 ```sh
@@ -63,4 +75,10 @@ docker-compose -f common.yml -f web_services.yml up
 ## Running web-clients
 ```sh
 docker-compose -f common.yml -f web_clients.yml up
+```
+
+
+## Running monitoring
+```sh
+docker-compose -f common.yml -f monitoring.yml up
 ```

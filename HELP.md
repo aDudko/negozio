@@ -25,7 +25,7 @@
 - **Other Tools:**
     - `Apache Kafka`, `ZooKeeper`
     - `Elasticsearch`, `Logstash`, `Kibana`
-    - `Grafana`, `Prometeus`
+    - `Grafana`, `Prometheus`
 - **Containerization and Orchestration:**
     - `Docker`, `Docker Compose`
     - `Kubernates`

@@ -25,6 +25,9 @@
     <properties>
         <jwt.version>0.12.5</jwt.version>
         <lombok.version>1.18.34</lombok.version>
+        <!-- Spring Cloud -->
+        <spring-cloud-dependencies.version>2023.0.2</spring-cloud-dependencies.version>
+        <spring-cloud.version>4.1.2</spring-cloud.version>
         <!-- Kafka -->
         <spring.kafka.version>3.0.12</spring.kafka.version>
         <kafka.avro.serializer.version>7.5.1</kafka.avro.serializer.version>
@@ -201,6 +204,25 @@
                 <groupId>com.negozio.service</groupId>
                 <artifactId>customer-messaging</artifactId>
                 <version>${project.version}</version>
+            </dependency>
+
+            <!-- Spring Cloud -->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud-dependencies.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
+                <version>${spring-cloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-loadbalancer</artifactId>
+                <version>${spring-cloud.version}</version>
             </dependency>
 
             <!-- Tests -->

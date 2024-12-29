@@ -8,7 +8,7 @@ scrape_configs:
     metrics_path: '/metrics'
     static_configs:
       - targets: ['grafana:3000']
-  - job_name: 'negozio-customer-service'
+  - job_name: 'negozio-order-service'
     scrape_interval: 1m
     metrics_path: '/actuator/metrics'
     static_configs:

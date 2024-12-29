@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+
+    rabbitmq:
+        image: rabbitmq:latest
+        hostname: rabbitmq
+        container_name: rabbitmq
+        restart: always
+        ports:
+            - "5672:5672"
+        volumes:
+            - "./volumes/rabbitmq/data:/var/lib/rabbitmq/"
+            - "./volumes/rabbitmq/log/:/var/log/rabbitmq"
+        networks:
+            - ${GLOBAL_NETWORK:-rabbitmq}
+
+    zipkin:
+        image: openzipkin/zipkin:latest
+        hostname: zipkin
+        container_name: zipkin
+        restart: always
+        ports:
+            - "9411:9411"
+        environment:
+            STORAGE_TYPE: mem
+            RABBIT_URI: amqp://guest:guest@rabbitmq:5672
+        depends_on:
+            - rabbitmq
+        networks:
+            - ${GLOBAL_NETWORK:-zipkin}

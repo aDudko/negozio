@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+
+    discovery-service:
+        image: anatolydudko/spring-cloud-eureka-server:3.2.5
+        hostname: discovery-service
+        container_name: discovery-service
+        ports:
+            - "8761:8761"
+        environment:
+            LOGGING_LEVEL_ROOT: INFO
+            EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://discovery-service:8761/eureka
+            MANAGEMENT_ZIPKIN_TRACING_ENDPOINT: http://zipkin:9411
+        volumes:
+            - "./volumes/discovery/logs:/workspace/spring-cloud-eureka-server/logs"
+        networks:
+            - ${GLOBAL_NETWORK:-service}
+
+    api-gateway:
+        image: anatolydudko/spring-cloud-gateway:3.2.5
+        hostname: api-gateway
+        container_name: api-gateway
+        ports:
+            - "8787:8787"
+        environment:
+            LOGGING_LEVEL_COM_MICROSERVICES_DEMO: INFO
+            EUREKA_SERVICE_URL: http://discovery-service:8761/eureka/
+            ZIPKIN_URL: http://zipkin:9411
+            SPRING_ZIPKIN_SENDER_TYPE: rabbit
+            RABBIT_URI: amqp://guest:guest@rabbitmq:5672
+            SPRING_RABBITMQ_HOST: rabbitmq
+        depends_on:
+            - discovery-service
+        volumes:
+            - "./volumes/gateway/logs:/workspace/spring-cloud-gateway/logs"
+        networks:
+            - ${GLOBAL_NETWORK:-service}
