@@ -28,7 +28,7 @@
     - `Grafana`, `Prometheus`
 - **Containerization and Orchestration:**
     - `Docker`, `Docker Compose`
-    - `Kubernates`
+    - `Kubernetes`
 - **Cloud Platforms:**
     - `Amazon Web Services`
     - `Google Cloud Platform` with `GKE`
