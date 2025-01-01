@@ -3,13 +3,13 @@ version: "3.8"
 services:
 
     negozio-customer-web-client-v1:
-        image: anatolydudko/negozio-customer-web-client-v1:0.2.0
+        image: anatolydudko/negozio-customer-web-client-v1:demo
         hostname: web-client
         container_name: web-client
         restart: always
         build:
             context: negozio-customer-web-client-v1
-            dockerfile: Dockerfile-dev
+            dockerfile: Dockerfile-prod
         environment:
             VITE_ORDER_SERVICE: http://localhost:8181
             VITE_DEPARTMENT_SERVICE: http://localhost:8183
@@ -18,6 +18,3 @@ services:
             VITE_CURRENCY: €
         ports:
             - "8080:8080"
-        volumes:
-            - /app/node_modules
-            - ./negozio-customer-web-client-v1:/app
