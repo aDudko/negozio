@@ -17,6 +17,6 @@ to scale efficiently and improve overall performance.
 
 ---
 ## License
-This project is copyright © 2024 Dudko Anatol.
+This project is copyright © 2025 Dudko Anatol.
 All rights reserved. No parts of this project may be used or reproduced without
 the express permission of the author. For permissions, contact me at: anatoly_dudko@icloud.com.
